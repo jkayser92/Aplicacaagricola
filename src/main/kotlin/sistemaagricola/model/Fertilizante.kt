@@ -1,4 +1,4 @@
-package model
+package sistemaagricola.model
 
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
@@ -12,8 +12,9 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 @Entity
-class Sementes(
+data class Fertilizante(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     val id: Long? = null,
     val nome: String,
     val quantidade: Number,

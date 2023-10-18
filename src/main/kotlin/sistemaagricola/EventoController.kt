@@ -1,4 +1,4 @@
-package controler
+package sistemaagricola
 
 import br.upf.sistemaeventos.dtos.EventoDTO
 import br.upf.sistemaeventos.dtos.EventoResponseDTO

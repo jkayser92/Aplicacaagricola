@@ -1,5 +1,4 @@
-package model
-
+package sistemaagricola.model
 import jakarta.persistence.Entity
 import jakarta.persistence.EnumType
 import jakarta.persistence.Enumerated
@@ -10,13 +9,11 @@ import jakarta.persistence.OneToMany
 import jakarta.persistence.PrimaryKeyJoinColumn
 import java.time.LocalDate
 import java.time.LocalDateTime
-
 @Entity
-data class Fertilizante(
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+data class Defencivos(@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+                      val  nome :String,
+                      val id: Long? = null,
+                      val quantidade : Number ,
+                      val preco : Number,
 
-    val id: Long? = null,
-    val nome: String,
-    val quantidade: Number,
-    val preco: Number,
 )
