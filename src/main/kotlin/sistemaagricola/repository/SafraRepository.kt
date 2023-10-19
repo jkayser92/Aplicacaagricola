@@ -1,14 +1,13 @@
-package sistemaagricola.service
-
+package sistemaagricola.repository
 
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
-import sistemaagricola.model.Sementes
+import sistemaagricola.model.Safra
 
 @Repository
-interface SementesRepository: JpaRepository<Sementes, Long> {
+interface SafraRepository: JpaRepository<Safra, Long> {
 
-    fun findByNome(nomeSementes: String, paginacao: Pageable): Page<Sementes>
+    fun findByCultura(culturaSafra : String, paginacao: Pageable): Page<Safra>
 }

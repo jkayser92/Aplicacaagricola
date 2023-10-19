@@ -1,4 +1,4 @@
-package sistemaagricola.service
+package sistemaagricola.repository
 
 
 import org.springframework.data.domain.Page
