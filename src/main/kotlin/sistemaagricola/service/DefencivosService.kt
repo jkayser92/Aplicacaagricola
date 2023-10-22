@@ -10,15 +10,16 @@ import sistemaagricola.exeptions.NotFoundException
 import sistemaagricola.repository.DefencivosRepository
 
 private const val Defencivos_NOT_FOUND_MESSAGE = "Defencivo não encontrado!"
+
 @Service
 class DefencivosService(
     private val repository: DefencivosRepository,
-    private val converter: DefencivoConverter
+    private val converter: DefencivoConverter,
 ) {
 
     fun listar(
         nomeDefencivos: String?,
-        paginacao: Pageable
+        paginacao: Pageable,
     ): Page<DefencivoResponseDTO> {
         val defencivos = if (nomeDefencivos == null) {
             repository.findAll(paginacao)

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 import sistemaagricola.model.Fertilizante
 
 @Repository
-interface FertilizanteRepository: JpaRepository<Fertilizante, Long> {
+interface FertilizanteRepository : JpaRepository<Fertilizante, Long> {
 
-    fun findByNome( nomeFertilizante : String, paginacao: Pageable): Page<Fertilizante>
+    fun findByNome(nomeFertilizante: String, paginacao: Pageable): Page<Fertilizante>
 }

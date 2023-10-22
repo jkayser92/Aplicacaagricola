@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository
 import sistemaagricola.model.Safra
 
 @Repository
-interface SafraRepository: JpaRepository<Safra, Long> {
+interface SafraRepository : JpaRepository<Safra, Long> {
 
-    fun findByCultura(culturaSafra : String, paginacao: Pageable): Page<Safra>
+    fun findByCultura(culturaSafra: String, paginacao: Pageable): Page<Safra>
 }

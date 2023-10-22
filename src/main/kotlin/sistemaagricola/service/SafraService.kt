@@ -1,4 +1,5 @@
 package sistemaagricola.service
+
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -7,17 +8,20 @@ import sistemaagricola.dtos.SafraDTO
 import sistemaagricola.dtos.safraResponseDTO
 import sistemaagricola.exeptions.NotFoundException
 import sistemaagricola.repository.SafraRepository
+
 private const val SAFRA_NOT_FOUND_MESSAGE = "Safa não encontrada!"
+
 @Service
 class SafraService(
     private val repository: SafraRepository,
-    private val converter: SafraConverter
+    private val converter: SafraConverter,
 ) {
 
     fun listar(
         culturaSafra: String?,
-        paginacao: Pageable): Page<safraResponseDTO> {
-        val safra  = if (culturaSafra == null) {
+        paginacao: Pageable,
+    ): Page<safraResponseDTO> {
+        val safra = if (culturaSafra == null) {
             repository.findAll(paginacao)
         } else {
             repository.findByCultura(culturaSafra, paginacao)
@@ -26,7 +30,7 @@ class SafraService(
             .map(converter::toSafraResponseDTO)
     }
 
-    fun buscarPorId(id: Long):  safraResponseDTO {
+    fun buscarPorId(id: Long): safraResponseDTO {
         val safra = repository.findById(id)
             .orElseThrow { NotFoundException(SAFRA_NOT_FOUND_MESSAGE) }
         return converter.toSafraResponseDTO(safra)
@@ -38,13 +42,13 @@ class SafraService(
         )
     }
 
-    fun atualizar(id: Long, dto: SafraDTO): safraResponseDTO{
+    fun atualizar(id: Long, dto: SafraDTO): safraResponseDTO {
         val safra = repository.findById(id)
             .orElseThrow { NotFoundException(SAFRA_NOT_FOUND_MESSAGE) }
             .copy(
                 ano = dto.ano,
                 cultura = dto.cultura,
-                )
+            )
         return converter.toSafraResponseDTO(repository.save(safra))
     }
 

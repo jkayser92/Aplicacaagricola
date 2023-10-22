@@ -6,10 +6,8 @@ import sistemaagricola.dtos.safraResponseDTO
 import sistemaagricola.model.Safra
 
 
-
-
 @Component
-    class SafraConverter {
+class SafraConverter {
 
     fun toSafra(dto: SafraDTO): Safra {
         return Safra(

@@ -11,17 +11,18 @@ import sistemaagricola.repository.FertilizanteRepository
 
 
 private const val Fertilizante_NOT_FOUND_MESSAGE = "Fertilizante não encontrada!"
+
 @Service
 class FertilizanteService(
     private val repository: FertilizanteRepository,
-    private val converter: FertilizanteConverter
+    private val converter: FertilizanteConverter,
 ) {
 
     fun listar(
         nomeFertilizante: String?,
-        paginacao: Pageable
+        paginacao: Pageable,
     ): Page<FertilizanteResponseDTO> {
-        val fertilizante  = if (nomeFertilizante == null) {
+        val fertilizante = if (nomeFertilizante == null) {
             repository.findAll(paginacao)
         } else {
             repository.findByNome(nomeFertilizante, paginacao)
@@ -36,7 +37,7 @@ class FertilizanteService(
         return converter.toFertilizanteResponseDTO(fertilizante)
     }
 
-    fun cadastrar(dto: FertilizanteDTO):  FertilizanteResponseDTO{
+    fun cadastrar(dto: FertilizanteDTO): FertilizanteResponseDTO {
         return converter.toFertilizanteResponseDTO(
             repository.save(converter.toFertiliznte(dto))
         )

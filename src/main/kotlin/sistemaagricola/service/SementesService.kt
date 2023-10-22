@@ -8,21 +8,23 @@ import sistemaagricola.dtos.SementesResponseDTO
 import sistemaagricola.dtos.SemetesDTO
 import sistemaagricola.exeptions.NotFoundException
 import sistemaagricola.repository.SementesRepository
+
 private const val SEMENTES_NOT_FOUND_MESSAGE = "Semente não encontrada!"
+
 @Service
 class SementesService(
     private val repository: SementesRepository,
-    private val converter: SementesConverter
+    private val converter: SementesConverter,
 ) {
 
     fun listar(
         nomeSementes: String?,
-        paginacao: Pageable
+        paginacao: Pageable,
     ): Page<SementesResponseDTO> {
-        val sementes  = if (nomeSementes == null) {
+        val sementes = if (nomeSementes == null) {
             repository.findAll(paginacao)
         } else {
-            repository.findByNome(nomeSementes , paginacao)
+            repository.findByNome(nomeSementes, paginacao)
         }
         return sementes
             .map(converter::toSementesResponseDTO)
@@ -47,7 +49,7 @@ class SementesService(
                 nome = dto.nome,
                 quantidade = dto.quantidade,
                 preco = dto.preco,
-                )
+            )
         return converter.toSementesResponseDTO(repository.save(sementes))
     }
 

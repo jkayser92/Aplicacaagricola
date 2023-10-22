@@ -6,7 +6,7 @@ import sistemaagricola.dtos.FertilizanteResponseDTO
 import sistemaagricola.model.Fertilizante
 
 @Component
-class FertilizanteConverter{
+class FertilizanteConverter {
     fun toFertiliznte(dto: FertilizanteDTO): Fertilizante {
         return Fertilizante(
             nome = dto.nome,

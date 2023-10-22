@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 import sistemaagricola.model.Defencivos
 
 @Repository
-interface DefencivosRepository: JpaRepository<Defencivos, Long> {
+interface DefencivosRepository : JpaRepository<Defencivos, Long> {
 
-    fun findByNome(nomeDefencivos : String, paginacao: Pageable): Page<Defencivos>
+    fun findByNome(nomeDefencivos: String, paginacao: Pageable): Page<Defencivos>
 }

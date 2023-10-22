@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository
 import sistemaagricola.model.Sementes
 
 @Repository
-interface SementesRepository: JpaRepository<Sementes, Long> {
+interface SementesRepository : JpaRepository<Sementes, Long> {
 
     fun findByNome(nomeSementes: String, paginacao: Pageable): Page<Sementes>
 }
