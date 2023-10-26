@@ -8,8 +8,9 @@ import jakarta.persistence.Id
 @Entity
 data class Defencivos(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val nome: String,
+
     val id: Long? = null,
+    val nome: String,
     val quantidade: Number,
     val preco: Number,
 
